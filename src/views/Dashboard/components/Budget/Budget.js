@@ -42,8 +42,11 @@ const useStyles = makeStyles(theme => ({
 
 const Budget = props => {
   const { className, ...rest } = props;
-
   const classes = useStyles();
+
+  const title = "BUDGET"
+  const caption = "Since last month";
+  const figure = "$24,000";
 
   return (
     <Card
@@ -62,9 +65,9 @@ const Budget = props => {
               gutterBottom
               variant="body2"
             >
-              BUDGET
+              {title}
             </Typography>
-            <Typography variant="h3">$24,000</Typography>
+            <Typography variant="h3">{figure}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
@@ -72,6 +75,7 @@ const Budget = props => {
             </Avatar>
           </Grid>
         </Grid>
+        
         <div className={classes.difference}>
           <ArrowDownwardIcon className={classes.differenceIcon} />
           <Typography
@@ -84,7 +88,7 @@ const Budget = props => {
             className={classes.caption}
             variant="caption"
           >
-            Since last month
+            {caption}
           </Typography>
         </div>
       </CardContent>
