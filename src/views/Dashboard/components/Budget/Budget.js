@@ -47,7 +47,6 @@ const Budget = props => {
   const title = "BUDGET"
   const caption = "Since last month";
   const figure = "$24,000";
-
   return (
     <Card
       {...rest}
