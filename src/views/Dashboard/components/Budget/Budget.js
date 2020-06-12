@@ -47,6 +47,7 @@ const Budget = props => {
   const title = "BUDGET"
   const caption = "Since last month";
   const figure = "$24,000";
+  // I want stash
   return (
     <Card
       {...rest}
