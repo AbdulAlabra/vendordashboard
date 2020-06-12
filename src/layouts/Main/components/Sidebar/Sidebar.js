@@ -6,13 +6,12 @@ import { Divider, Drawer } from '@material-ui/core';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
-import ImageIcon from '@material-ui/icons/Image';
+import StorefrontSharpIcon from '@material-ui/icons/StorefrontSharp';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-
-import { Profile, SidebarNav, UpgradePlan } from './components';
+import LocalShippingSharpIcon from '@material-ui/icons/LocalShippingSharp';
+import { Profile, SidebarNav } from './components';
+import AccountBalanceSharpIcon from '@material-ui/icons/AccountBalanceSharp';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -49,8 +48,13 @@ const Sidebar = props => {
       icon: <DashboardIcon />
     },
     {
-      title: 'Users',
-      href: '/users',
+      title: 'Orders',
+      href: '/orders',
+      icon: <LocalShippingSharpIcon />
+    },
+    {
+      title: 'Customers',
+      href: '/customers',
       icon: <PeopleIcon />
     },
     {
@@ -59,19 +63,15 @@ const Sidebar = props => {
       icon: <ShoppingBasketIcon />
     },
     {
-      title: 'Authentication',
-      href: '/sign-in',
-      icon: <LockOpenIcon />
+      title: 'Branches',
+      href: '/branches',
+      icon: <StorefrontSharpIcon />
     },
+    
     {
-      title: 'Typography',
-      href: '/typography',
-      icon: <TextFieldsIcon />
-    },
-    {
-      title: 'Icons',
-      href: '/icons',
-      icon: <ImageIcon />
+      title: 'Transactions',
+      href: '/transactions',
+      icon: <AccountBalanceSharpIcon />
     },
     {
       title: 'Account',
@@ -103,7 +103,7 @@ const Sidebar = props => {
           className={classes.nav}
           pages={pages}
         />
-        <UpgradePlan />
+
       </div>
     </Drawer>
   );

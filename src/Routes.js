@@ -5,16 +5,18 @@ import { RouteWithLayout } from './components';
 import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 
 import {
-  Dashboard as DashboardView,
-  ProductList as ProductListView,
-  UserList as UserListView,
-  Typography as TypographyView,
-  Icons as IconsView,
-  Account as AccountView,
-  Settings as SettingsView,
-  SignUp as SignUpView,
-  SignIn as SignInView,
-  NotFound as NotFoundView
+  // views
+  Dashboard,
+  OrdersList,
+  CustomersList,
+  ProductList,
+  BranchesList,
+  TransactionsList,
+  Account,
+  Settings,
+  SignUp,
+  SignIn,
+  NotFound,
 } from './views';
 
 const Routes = () => {
@@ -26,61 +28,67 @@ const Routes = () => {
         to="/dashboard"
       />
       <RouteWithLayout
-        component={DashboardView}
+        component={Dashboard}
         exact
         layout={MainLayout}
         path="/dashboard"
       />
-      <RouteWithLayout
-        component={UserListView}
+          <RouteWithLayout
+        component={OrdersList}
         exact
         layout={MainLayout}
-        path="/users"
+        path="/orders"
       />
       <RouteWithLayout
-        component={ProductListView}
+        component={CustomersList}
+        exact
+        layout={MainLayout}
+        path="/customers"
+      />
+      <RouteWithLayout
+        component={ProductList}
         exact
         layout={MainLayout}
         path="/products"
       />
       <RouteWithLayout
-        component={TypographyView}
+        component={BranchesList}
         exact
         layout={MainLayout}
-        path="/typography"
+        path="/branches"
       />
-      <RouteWithLayout
-        component={IconsView}
+       <RouteWithLayout
+        component={TransactionsList}
         exact
         layout={MainLayout}
-        path="/icons"
+        path="/transactions"
       />
       <RouteWithLayout
-        component={AccountView}
+        component={Account}
         exact
         layout={MainLayout}
         path="/account"
       />
       <RouteWithLayout
-        component={SettingsView}
+        component={Settings}
         exact
         layout={MainLayout}
         path="/settings"
       />
       <RouteWithLayout
-        component={SignUpView}
+        component={SignUp}
         exact
         layout={MinimalLayout}
         path="/sign-up"
       />
       <RouteWithLayout
-        component={SignInView}
+        component={SignIn}
         exact
         layout={MinimalLayout}
         path="/sign-in"
       />
       <RouteWithLayout
-        component={NotFoundView}
+        component={NotFound}
         exact
         layout={MinimalLayout}
         path="/not-found"
