@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import MoneyIcon from '@material-ui/icons/Money';
+import Icon from '@material-ui/icons/HourglassEmptySharp';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,13 +40,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Budget = props => {
+const PendingOrders = props => {
   const { className, ...rest } = props;
   const classes = useStyles();
 
-  const title = "BUDGET"
+  const title = "Pending Orders";
   const caption = "Since last month";
-  const figure = "$24,000";
+  const figure = "$224,000";
+
   return (
     <Card
       {...rest}
@@ -70,7 +71,7 @@ const Budget = props => {
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <MoneyIcon className={classes.icon} />
+              <Icon className={classes.icon} />
             </Avatar>
           </Grid>
         </Grid>
@@ -95,8 +96,8 @@ const Budget = props => {
   );
 };
 
-Budget.propTypes = {
+PendingOrders.propTypes = {
   className: PropTypes.string
 };
 
-export default Budget;
+export default PendingOrders;

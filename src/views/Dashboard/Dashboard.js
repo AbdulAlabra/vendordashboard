@@ -3,13 +3,15 @@ import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
 import {
-  Budget,
-  TotalUsers,
-  TasksProgress,
-  TotalProfit,
+  PendingOrders,
+  ReadyOrders,
+  OnTheWayOrders,
+  DeliveredOrders,
+  CanceledOrders,
+  ReturnedOrders,
+  AccountBalance,
   LatestSales,
   UsersByDevice,
-  LatestProducts,
   LatestOrders
 } from './components';
 
@@ -18,89 +20,147 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4)
   }
 }));
+const gridSizes = {
+  orders: {
+    xl: 4,
+    lg: 4,
+    sm: 6,
+    xs: 12
+  },
+  accountBalance: {
+    xl: 12,
+    lg: 12,
+    sm: 12,
+    xs: 12
+  },
+  graph: {
+    xl: 8,
+    lg: 8,
+    md: 12,
+    xs: 12
+  },
+  chart: {
+    xl: 4,
+    lg: 4,
+    md: 12,
+    xs: 12
+  },
+  latestOrders: {
+    xl: 12,
+    lg: 12,
+    md: 12,
+    xs: 12
+  }
+
+}
 
 const Dashboard = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
+
       <Grid
-        container
-        spacing={4}
+      container
+      spacing={4}
       >
+
         <Grid
           item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
+          xl={gridSizes.orders.xl}
+          lg={gridSizes.orders.lg}
+          sm={gridSizes.orders.sm}
+          xs={gridSizes.orders.xs}
         >
-          <Budget />
+          <PendingOrders />
         </Grid>
         <Grid
           item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
+          xl={gridSizes.orders.xl}
+          lg={gridSizes.orders.lg}
+          sm={gridSizes.orders.sm}
+          xs={gridSizes.orders.xs}
         >
-          <TotalUsers />
+          <ReadyOrders />
         </Grid>
         <Grid
           item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
+          xl={gridSizes.orders.xl}
+          lg={gridSizes.orders.lg}
+          sm={gridSizes.orders.sm}
+          xs={gridSizes.orders.xs}
         >
-          <TasksProgress />
+          <OnTheWayOrders />
+        </Grid>
+
+        <Grid
+          item
+          xl={gridSizes.orders.xl}
+          lg={gridSizes.orders.lg}
+          sm={gridSizes.orders.sm}
+          xs={gridSizes.orders.xs}
+        >
+          <CanceledOrders />
         </Grid>
         <Grid
           item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
+          xl={gridSizes.orders.xl}
+          lg={gridSizes.orders.lg}
+          sm={gridSizes.orders.sm}
+          xs={gridSizes.orders.xs}
         >
-          <TotalProfit />
+          <ReturnedOrders />
         </Grid>
         <Grid
           item
-          lg={8}
-          md={12}
-          xl={9}
-          xs={12}
+          xl={gridSizes.orders.xl}
+          lg={gridSizes.orders.lg}
+          sm={gridSizes.orders.sm}
+          xs={gridSizes.orders.xs}
+        >
+          <DeliveredOrders />
+        </Grid>
+        <Grid
+          item
+          xl={gridSizes.accountBalance.xl}
+          lg={gridSizes.accountBalance.lg}
+          sm={gridSizes.accountBalance.sm}
+          xs={gridSizes.accountBalance.xs}
+        >
+          <AccountBalance />
+        </Grid>
+        <Grid
+          item
+          xl={gridSizes.latestOrders.xl}
+          lg={gridSizes.latestOrders.lg}
+          md={gridSizes.latestOrders.md}
+          xs={gridSizes.latestOrders.xs}
+        >
+          <LatestOrders />
+        </Grid>
+
+        <Grid
+          item
+          xl={gridSizes.graph.xl}
+          lg={gridSizes.graph.lg}
+          md={gridSizes.graph.md}
+          xs={gridSizes.graph.xs}
         >
           <LatestSales />
         </Grid>
         <Grid
           item
-          lg={4}
-          md={6}
-          xl={3}
-          xs={12}
+          xl={gridSizes.chart.xl}
+          lg={gridSizes.chart.lg}
+          md={gridSizes.chart.md}
+          xs={gridSizes.chart.xs}
         >
           <UsersByDevice />
         </Grid>
-        <Grid
-          item
-          lg={4}
-          md={6}
-          xl={3}
-          xs={12}
-        >
-          <LatestProducts />
-        </Grid>
-        <Grid
-          item
-          lg={8}
-          md={12}
-          xl={9}
-          xs={12}
-        >
-          <LatestOrders />
-        </Grid>
+    
       </Grid>
+
+
     </div>
   );
 };
