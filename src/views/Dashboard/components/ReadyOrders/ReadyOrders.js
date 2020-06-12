@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import MoneyIcon from '@material-ui/icons/Money';
+import Icon from '@material-ui/icons/AlarmOnSharp';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,10 +40,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Budget = props => {
+const ReadyOrders = props => {
   const { className, ...rest } = props;
-
   const classes = useStyles();
+
+  const title = "Ready Orders";
+  const caption = "Since last month";
+  const figure = "224,000";
 
   return (
     <Card
@@ -62,16 +65,17 @@ const Budget = props => {
               gutterBottom
               variant="body2"
             >
-              BUDGET
+              {title}
             </Typography>
-            <Typography variant="h3">$24,000</Typography>
+            <Typography variant="h3">{figure}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <MoneyIcon className={classes.icon} />
+              <Icon className={classes.icon} />
             </Avatar>
           </Grid>
         </Grid>
+        
         <div className={classes.difference}>
           <ArrowDownwardIcon className={classes.differenceIcon} />
           <Typography
@@ -84,7 +88,7 @@ const Budget = props => {
             className={classes.caption}
             variant="caption"
           >
-            Since last month
+            {caption}
           </Typography>
         </div>
       </CardContent>
@@ -92,8 +96,8 @@ const Budget = props => {
   );
 };
 
-Budget.propTypes = {
+ReadyOrders.propTypes = {
   className: PropTypes.string
 };
 
-export default Budget;
+export default ReadyOrders;

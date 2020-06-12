@@ -2,14 +2,19 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import Icon from '@material-ui/icons/SentimentVerySatisfiedSharp';
+import {
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  Avatar,
+  LinearProgress
+} from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText
+    height: '100%'
   },
   content: {
     alignItems: 'center',
@@ -19,21 +24,27 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.white,
-    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
     height: 56,
     width: 56
   },
   icon: {
     height: 32,
     width: 32
+  },
+  progress: {
+    marginTop: theme.spacing(3)
   }
 }));
 
-const TotalProfit = props => {
+const DeliveredOrders = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
+
+  const title = "Delivered Orders";
+  const figure = "24,00";
 
   return (
     <Card
@@ -48,32 +59,32 @@ const TotalProfit = props => {
           <Grid item>
             <Typography
               className={classes.title}
-              color="inherit"
+              color="textSecondary"
               gutterBottom
               variant="body2"
             >
-              TOTAL PROFIT
+              {title}
             </Typography>
-            <Typography
-              color="inherit"
-              variant="h3"
-            >
-              $23,200
-            </Typography>
+            <Typography variant="h3">{figure}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <AttachMoneyIcon className={classes.icon} />
+              <Icon className={classes.icon} />
             </Avatar>
           </Grid>
         </Grid>
+        <LinearProgress
+          className={classes.progress}
+          value={75.5}
+          variant="determinate"
+        />
       </CardContent>
     </Card>
   );
 };
 
-TotalProfit.propTypes = {
+DeliveredOrders.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalProfit;
+export default DeliveredOrders;
