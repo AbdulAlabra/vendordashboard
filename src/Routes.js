@@ -14,6 +14,8 @@ import {
   TransactionsList,
   Account,
   Settings,
+  CreateNewOrder,
+  Map,
   SignUp,
   SignIn,
   NotFound,
@@ -74,6 +76,18 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/settings"
+      />
+       <RouteWithLayout
+        component={CreateNewOrder}
+        exact
+        layout={MainLayout}
+        path="/neworder"
+      />
+      <RouteWithLayout
+        component={Map}
+        exact
+        layout={MainLayout}
+        path="/map"
       />
       <RouteWithLayout
         component={SignUp}
