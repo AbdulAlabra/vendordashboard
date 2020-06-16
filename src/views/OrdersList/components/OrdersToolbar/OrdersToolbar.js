@@ -45,6 +45,7 @@ const OrdersToolbar = props => {
         <Button
           color="primary"
           variant="contained"
+          href="/neworder"
         >
           Add New Order
         </Button>

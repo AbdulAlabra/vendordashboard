@@ -46,6 +46,14 @@ const OrdersTable = props => {
 
   const classes = useStyles();
 
+  const customerName = "Name";
+  const customerPhone = "Phone";
+  const customerLocation = "Location";
+  const placedDate = "Placed";
+  const expectedDate = "Expected";
+  const deliveredDate = "Delivered";
+  const currentOrderStatus = "Status";
+
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(0);
@@ -114,11 +122,13 @@ const OrdersTable = props => {
                       onChange={handleSelectAll}
                     />
                   </TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Location</TableCell>
-                  <TableCell>Phone</TableCell>
-                  <TableCell>Registration date</TableCell>
+                  <TableCell>{customerName}</TableCell>
+                  <TableCell>{customerPhone}</TableCell>
+                  <TableCell>{customerLocation}</TableCell>
+                  <TableCell>{placedDate}</TableCell>
+                  <TableCell>{expectedDate}</TableCell>
+                  <TableCell>{deliveredDate}</TableCell>
+                  <TableCell>{currentOrderStatus}</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -148,14 +158,22 @@ const OrdersTable = props => {
                         <Typography variant="body1">{user.name}</Typography>
                       </div>
                     </TableCell>
-                    <TableCell>{user.email}</TableCell>
+                    <TableCell>{user.phone}</TableCell>
                     <TableCell>
                       {user.address.city}, {user.address.state},{' '}
                       {user.address.country}
                     </TableCell>
-                    <TableCell>{user.phone}</TableCell>
                     <TableCell>
                       {moment(user.createdAt).format('DD/MM/YYYY')}
+                    </TableCell>
+                    <TableCell>
+                      {moment(user.createdAt).format('DD/MM/YYYY')}
+                    </TableCell>
+                    <TableCell>
+                      {moment(user.createdAt).format('DD/MM/YYYY')}
+                    </TableCell>
+                    <TableCell>
+                      On the way
                     </TableCell>
                   </TableRow>
                 ))}

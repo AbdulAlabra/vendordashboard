@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-//import Icon from '@material-ui/icons/LocalShippingSharp';
-import Icon from '@material-ui/icons/SentimentSatisfiedSharp';
+import Icon from '@material-ui/icons/LocalShippingSharp';
+//import Icon from '@material-ui/icons/SentimentSatisfiedSharp';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%'
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.success.main,
+    backgroundColor: theme.palette.primary.main,
     height: 56,
     width: 56
   },

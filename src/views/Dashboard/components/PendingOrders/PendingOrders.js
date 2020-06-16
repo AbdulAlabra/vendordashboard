@@ -17,8 +17,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontWeight: 700
   },
-  avatar: {
-    backgroundColor: theme.palette.error.main,
+  avatar: { // this is the icon background color
+    backgroundColor: theme.palette.warning.light,
     height: 56,
     width: 56
   },

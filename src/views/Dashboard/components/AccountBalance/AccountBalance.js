@@ -49,7 +49,6 @@ const AccountBalance = props => {
           justify="space-between"
         >
           <Grid item>
-         
             <Typography
               className={classes.title}
               color="inherit"
@@ -58,16 +57,13 @@ const AccountBalance = props => {
             >
               {title}
             </Typography>
-         
             <Typography
               color="inherit"
               variant="h3"
             >
               {figure}
             </Typography>
-         
           </Grid>
-
           <Grid item>
             <Avatar className={classes.avatar}>
               <Icon className={classes.icon} />
