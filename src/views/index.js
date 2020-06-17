@@ -13,6 +13,7 @@ export { default as CreateNewProduct } from './CreateNewProduct';
 export { default as CreateNewBranch } from './CreateNewBranch';
 
 export { default as SingleBranchView } from './SingleBranchView';
+export { default as SingleProductView } from './SingleProductView';
 
 export { default as Map } from '../components/Map';
 
