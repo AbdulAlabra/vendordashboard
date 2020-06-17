@@ -45,6 +45,7 @@ const ProductsToolbar = props => {
         <Button
           color="primary"
           variant="contained"
+          href="/newbranch"
         >
           Add a branch
         </Button>
