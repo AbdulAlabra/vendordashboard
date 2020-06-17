@@ -17,6 +17,7 @@ import {
   CreateNewOrder,
   CreateNewProduct,
   CreateNewBranch,
+  SingleBranchView,
   Map,
   SignUp,
   SignIn,
@@ -37,31 +38,31 @@ const Routes = () => {
         component={OrdersList}
         exact
         layout={MainLayout}
-        path="/orders"
+        path="/orderslist"
       />
       <RouteWithLayout
         component={CustomersList}
         exact
         layout={MainLayout}
-        path="/customers"
+        path="/customerslist"
       />
       <RouteWithLayout
         component={ProductList}
         exact
         layout={MainLayout}
-        path="/products"
+        path="/productslist"
       />
       <RouteWithLayout
         component={BranchesList}
         exact
         layout={MainLayout}
-        path="/branches"
+        path="/brancheslist"
       />
       <RouteWithLayout
         component={TransactionsList}
         exact
         layout={MainLayout}
-        path="/transactions"
+        path="/transactionslist"
       />
       <RouteWithLayout
         component={Account}
@@ -92,6 +93,12 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/newbranch"
+      />
+      <RouteWithLayout
+        component={SingleBranchView}
+        exact
+        layout={MainLayout}
+        path="/branch"
       />
       <RouteWithLayout component={Map} exact layout={MainLayout} path="/map" />
       <RouteWithLayout
