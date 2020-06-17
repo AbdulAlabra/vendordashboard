@@ -15,27 +15,24 @@ import {
   Account,
   Settings,
   CreateNewOrder,
+  CreateNewProduct,
   Map,
   SignUp,
   SignIn,
-  NotFound,
+  NotFound
 } from './views';
 
 const Routes = () => {
   return (
     <Switch>
-      <Redirect
-        exact
-        from="/"
-        to="/dashboard"
-      />
+      <Redirect exact from="/" to="/dashboard" />
       <RouteWithLayout
         component={Dashboard}
         exact
         layout={MainLayout}
         path="/dashboard"
       />
-          <RouteWithLayout
+      <RouteWithLayout
         component={OrdersList}
         exact
         layout={MainLayout}
@@ -59,7 +56,7 @@ const Routes = () => {
         layout={MainLayout}
         path="/branches"
       />
-       <RouteWithLayout
+      <RouteWithLayout
         component={TransactionsList}
         exact
         layout={MainLayout}
@@ -77,18 +74,19 @@ const Routes = () => {
         layout={MainLayout}
         path="/settings"
       />
-       <RouteWithLayout
+      <RouteWithLayout
         component={CreateNewOrder}
         exact
         layout={MainLayout}
         path="/neworder"
       />
       <RouteWithLayout
-        component={Map}
+        component={CreateNewProduct}
         exact
         layout={MainLayout}
-        path="/map"
+        path="/newproduct"
       />
+      <RouteWithLayout component={Map} exact layout={MainLayout} path="/map" />
       <RouteWithLayout
         component={SignUp}
         exact

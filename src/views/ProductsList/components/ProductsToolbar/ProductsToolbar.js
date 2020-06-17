@@ -45,6 +45,7 @@ const UsersToolbar = props => {
         <Button
           color="primary"
           variant="contained"
+          href='/newproduct'
         >
           Add New Product
         </Button>

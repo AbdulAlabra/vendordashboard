@@ -9,6 +9,7 @@ export { default as Account } from './Account';
 export { default as Settings } from './Settings';
 //side menu
 export { default as CreateNewOrder } from './CreateNewOrder';
+export { default as CreateNewProduct } from './CreateNewProduct';
 export { default as Map } from '../components/Map';
 
 export { default as NotFound } from './NotFound';
