@@ -11,6 +11,7 @@ export { default as Settings } from './Settings';
 export { default as CreateNewOrder } from './CreateNewOrder';
 export { default as CreateNewProduct } from './CreateNewProduct';
 export { default as CreateNewBranch } from './CreateNewBranch';
+export { default as CreateNewCustomer } from './CreateNewCustomer';
 
 export { default as SingleBranchView } from './SingleBranchView';
 export { default as SingleProductView } from './SingleProductView';

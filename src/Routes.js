@@ -17,6 +17,7 @@ import {
   CreateNewOrder,
   CreateNewProduct,
   CreateNewBranch,
+  CreateNewCustomer,
   SingleBranchView,
   SingleProductView,
   Map,
@@ -94,6 +95,12 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/newbranch"
+      />
+      <RouteWithLayout
+        component={CreateNewCustomer}
+        exact
+        layout={MainLayout}
+        path="/newcustomer"
       />
       <RouteWithLayout
         component={SingleBranchView}
