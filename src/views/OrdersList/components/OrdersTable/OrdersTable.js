@@ -16,7 +16,8 @@ import {
   TableHead,
   TableRow,
   Typography,
-  TablePagination
+  TablePagination,
+  Button
 } from '@material-ui/core';
 
 import { getInitials } from 'helpers';
@@ -72,6 +73,10 @@ const OrdersTable = props => {
     setSelectedUsers(selectedUsers);
   };
 
+  const handleClickedOrder = () => {
+    console.log('Cliekced')
+
+}
   const handleSelectOne = (event, id) => {
     const selectedIndex = selectedUsers.indexOf(id);
     let newSelectedUsers = [];
@@ -173,7 +178,12 @@ const OrdersTable = props => {
                       {moment(user.createdAt).format('DD/MM/YYYY')}
                     </TableCell>
                     <TableCell>
+                      <Button
+                      onClick={() => handleClickedOrder()}
+                      href="/order"
+                      >
                       On the way
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}

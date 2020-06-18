@@ -7,8 +7,11 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { BranchLocationFrom, BranchInstructionsForm, Review } from './components';
-
+import {
+  BranchLocationFrom,
+  BranchInstructionsForm,
+  Review
+} from './components';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -81,7 +84,7 @@ export default function Checkout() {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            New Branch
+            Branch Details
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map(label => (

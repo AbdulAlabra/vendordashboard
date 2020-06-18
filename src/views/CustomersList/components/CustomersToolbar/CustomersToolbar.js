@@ -45,6 +45,7 @@ const CustomersToolbar = props => {
         <Button
           color="primary"
           variant="contained"
+          href="/newcustomer"
         >
           Add Customer
         </Button>

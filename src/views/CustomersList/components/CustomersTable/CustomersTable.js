@@ -16,7 +16,8 @@ import {
   TableHead,
   TableRow,
   Typography,
-  TablePagination
+  TablePagination,
+  Button
 } from '@material-ui/core';
 
 import { getInitials } from 'helpers';
@@ -115,10 +116,12 @@ const CustomersTable = props => {
                     />
                   </TableCell>
                   <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Location</TableCell>
                   <TableCell>Phone</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Orders</TableCell>
+                  <TableCell>Location</TableCell>
                   <TableCell>Registration date</TableCell>
+                  <TableCell>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -137,6 +140,7 @@ const CustomersTable = props => {
                         value="true"
                       />
                     </TableCell>
+                    
                     <TableCell>
                       <div className={classes.nameContainer}>
                         <Avatar
@@ -148,14 +152,22 @@ const CustomersTable = props => {
                         <Typography variant="body1">{user.name}</Typography>
                       </div>
                     </TableCell>
+                    <TableCell>{user.phone}</TableCell>
                     <TableCell>{user.email}</TableCell>
+                    <TableCell>7</TableCell>
                     <TableCell>
                       {user.address.city}, {user.address.state},{' '}
                       {user.address.country}
                     </TableCell>
-                    <TableCell>{user.phone}</TableCell>
                     <TableCell>
                       {moment(user.createdAt).format('DD/MM/YYYY')}
+                    </TableCell>
+                    <TableCell>
+                    <Button
+                    href="/customer"
+                    >
+                      Edit
+                    </Button>
                     </TableCell>
                   </TableRow>
                 ))}

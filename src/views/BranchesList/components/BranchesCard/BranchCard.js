@@ -8,11 +8,10 @@ import {
   CardActions,
   Typography,
   Grid,
-  Divider
+  Divider,
+  Button
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
-
+import HomeIcon from '@material-ui/icons/Home';
 const useStyles = makeStyles(theme => ({
   root: {},
   imageContainer: {
@@ -62,11 +61,12 @@ const ProductCard = props => {
           gutterBottom
           variant="h4"
         >
-          {product.title}
+          Branch Name
         </Typography>
         <Typography
           align="center"
           variant="body1"
+          // this can be address
         >
           {product.description}
         </Typography>
@@ -81,24 +81,27 @@ const ProductCard = props => {
             className={classes.statsItem}
             item
           >
-            <AccessTimeIcon className={classes.statsIcon} />
+            <HomeIcon className={classes.statsIcon} />
             <Typography
               display="inline"
               variant="body2"
             >
-              Updated 2hr ago
+              Branch ID: 1882
             </Typography>
           </Grid>
           <Grid
             className={classes.statsItem}
             item
           >
-            <GetAppIcon className={classes.statsIcon} />
             <Typography
               display="inline"
               variant="body2"
             >
-              {product.totalDownloads} Downloads
+              <Button
+              href="/branch"
+              >
+                Edit
+              </Button>
             </Typography>
           </Grid>
         </Grid>

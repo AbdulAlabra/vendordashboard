@@ -16,7 +16,8 @@ import {
   TableHead,
   TableRow,
   Typography,
-  TablePagination
+  TablePagination,
+  Button
 } from '@material-ui/core';
 
 import { getInitials } from 'helpers';
@@ -115,10 +116,11 @@ const UsersTable = props => {
                     />
                   </TableCell>
                   <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
+                  <TableCell>Price</TableCell>
+                  <TableCell>Quantity</TableCell>
                   <TableCell>Location</TableCell>
-                  <TableCell>Phone</TableCell>
-                  <TableCell>Registration date</TableCell>
+                  <TableCell>SKU</TableCell>
+                  <TableCell>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -148,14 +150,19 @@ const UsersTable = props => {
                         <Typography variant="body1">{user.name}</Typography>
                       </div>
                     </TableCell>
-                    <TableCell>{user.email}</TableCell>
                     <TableCell>
                       {user.address.city}, {user.address.state},{' '}
                       {user.address.country}
                     </TableCell>
-                    <TableCell>{user.phone}</TableCell>
+                    <TableCell>100 SAR</TableCell>
+                    <TableCell>370</TableCell>
+                    <TableCell>123332456</TableCell>
                     <TableCell>
-                      {moment(user.createdAt).format('DD/MM/YYYY')}
+                    <Button
+                    href='/product'
+                    >
+                      View
+                    </Button>
                     </TableCell>
                   </TableRow>
                 ))}
