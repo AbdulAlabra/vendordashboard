@@ -16,6 +16,12 @@ import {
   Settings,
   CreateNewOrder,
   CreateNewProduct,
+  CreateNewBranch,
+  CreateNewCustomer,
+  SingleBranchView,
+  SingleProductView,
+  SingleCustomerView,
+  SingleOrderView,
   Map,
   SignUp,
   SignIn,
@@ -36,31 +42,31 @@ const Routes = () => {
         component={OrdersList}
         exact
         layout={MainLayout}
-        path="/orders"
+        path="/orderslist"
       />
       <RouteWithLayout
         component={CustomersList}
         exact
         layout={MainLayout}
-        path="/customers"
+        path="/customerslist"
       />
       <RouteWithLayout
         component={ProductList}
         exact
         layout={MainLayout}
-        path="/products"
+        path="/productslist"
       />
       <RouteWithLayout
         component={BranchesList}
         exact
         layout={MainLayout}
-        path="/branches"
+        path="/brancheslist"
       />
       <RouteWithLayout
         component={TransactionsList}
         exact
         layout={MainLayout}
-        path="/transactions"
+        path="/transactionslist"
       />
       <RouteWithLayout
         component={Account}
@@ -85,6 +91,42 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/newproduct"
+      />
+      <RouteWithLayout
+        component={CreateNewBranch}
+        exact
+        layout={MainLayout}
+        path="/newbranch"
+      />
+      <RouteWithLayout
+        component={CreateNewCustomer}
+        exact
+        layout={MainLayout}
+        path="/newcustomer"
+      />
+      <RouteWithLayout
+        component={SingleBranchView}
+        exact
+        layout={MainLayout}
+        path="/branch"
+      />
+      <RouteWithLayout
+        component={SingleProductView}
+        exact
+        layout={MainLayout}
+        path="/product"
+      />
+      <RouteWithLayout
+        component={SingleCustomerView}
+        exact
+        layout={MainLayout}
+        path="/customer"
+      />
+      <RouteWithLayout
+        component={SingleOrderView}
+        exact
+        layout={MainLayout}
+        path="/order"
       />
       <RouteWithLayout component={Map} exact layout={MainLayout} path="/map" />
       <RouteWithLayout

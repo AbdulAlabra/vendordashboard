@@ -49,28 +49,28 @@ const Sidebar = props => {
     },
     {
       title: 'Orders',
-      href: '/orders',
+      href: '/orderslist',
       icon: <LocalShippingSharpIcon />
     },
     {
       title: 'Customers',
-      href: '/customers',
+      href: '/customerslist',
       icon: <PeopleIcon />
     },
     {
       title: 'Products',
-      href: '/products',
+      href: '/productslist',
       icon: <ShoppingBasketIcon />
     },
     {
       title: 'Branches',
-      href: '/branches',
+      href: '/brancheslist',
       icon: <StorefrontSharpIcon />
     },
     
     {
       title: 'Transactions',
-      href: '/transactions',
+      href: '/transactionslist',
       icon: <AccountBalanceSharpIcon />
     },
     {

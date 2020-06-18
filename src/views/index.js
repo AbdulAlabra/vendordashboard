@@ -10,6 +10,14 @@ export { default as Settings } from './Settings';
 //side menu
 export { default as CreateNewOrder } from './CreateNewOrder';
 export { default as CreateNewProduct } from './CreateNewProduct';
+export { default as CreateNewBranch } from './CreateNewBranch';
+export { default as CreateNewCustomer } from './CreateNewCustomer';
+
+export { default as SingleBranchView } from './SingleBranchView';
+export { default as SingleProductView } from './SingleProductView';
+export { default as SingleCustomerView } from './SingleCustomerView';
+export { default as SingleOrderView } from './SingleOrderView';
+
 export { default as Map } from '../components/Map';
 
 export { default as NotFound } from './NotFound';

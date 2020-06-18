@@ -11,10 +11,11 @@ import {
   Divider,
   Typography
 } from '@material-ui/core';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import TabletMacIcon from '@material-ui/icons/TabletMac';
+import BlockIcon from '@material-ui/icons/Block';
+import LocalShippingSharp from '@material-ui/icons/LocalShippingSharp';
+import RestoreSharp from '@material-ui/icons/RestoreSharp';
+import AlarmOnSharp from '@material-ui/icons/AlarmOnSharp';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -58,7 +59,7 @@ const UsersByDevice = props => {
         hoverBorderColor: theme.palette.white
       }
     ],
-    labels: ['Desktop', 'Tablet', 'Mobile']
+    labels: ['Delivered', 'Canceled', 'Returned']
   };
 
   const options = {
@@ -85,21 +86,21 @@ const UsersByDevice = props => {
 
   const devices = [
     {
-      title: 'Desktop',
+      title: 'Delivered',
       value: '63',
-      icon: <LaptopMacIcon />,
+      icon: <AlarmOnSharp />,
       color: theme.palette.primary.main
     },
     {
-      title: 'Tablet',
+      title: 'Canceled',
       value: '15',
-      icon: <TabletMacIcon />,
+      icon: <BlockIcon />,
       color: theme.palette.error.main
     },
     {
-      title: 'Mobile',
+      title: 'Returned',
       value: '23',
-      icon: <PhoneIphoneIcon />,
+      icon: <RestoreSharp />,
       color: theme.palette.warning.main
     }
   ];
@@ -115,7 +116,7 @@ const UsersByDevice = props => {
             <RefreshIcon />
           </IconButton>
         }
-        title="Users By Device"
+        title="Orders By Type"
       />
       <Divider />
       <CardContent>

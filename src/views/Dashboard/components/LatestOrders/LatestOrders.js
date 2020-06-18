@@ -68,8 +68,9 @@ const LatestOrders = props => {
             color="primary"
             size="small"
             variant="outlined"
+            href="/neworder"
           >
-            New entry
+            New Order
           </Button>
         }
         title="Latest Orders"
@@ -133,6 +134,7 @@ const LatestOrders = props => {
           color="primary"
           size="small"
           variant="text"
+          href="/orderslist"
         >
           View all <ArrowRightIcon />
         </Button>

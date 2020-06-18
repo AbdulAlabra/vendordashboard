@@ -59,13 +59,13 @@ const LatestSales = props => {
       </CardContent>
       <Divider />
       <CardActions className={classes.actions}>
-        <Button
+        {/* <Button
           color="primary"
           size="small"
           variant="text"
         >
           Overview <ArrowRightIcon />
-        </Button>
+        </Button> */}
       </CardActions>
     </Card>
   );

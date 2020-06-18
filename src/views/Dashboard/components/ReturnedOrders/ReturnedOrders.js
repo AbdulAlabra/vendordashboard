@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-//import Icon from '@material-ui/icons/RestoreSharp';
-//import Icon from '@material-ui/icons/KeyboardReturnSharp';
-import Icon from '@material-ui/icons/SentimentDissatisfiedSharp';
+import Icon from '@material-ui/icons/RestoreSharp';
 
 const useStyles = makeStyles(theme => ({
   root: {

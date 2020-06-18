@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.light,
     height: 56,
     width: 56
   },
@@ -44,27 +44,20 @@ const ReadyOrders = props => {
   const { className, ...rest } = props;
   const classes = useStyles();
 
-  const title = "Ready Orders";
-  const caption = "Since last month";
-  const figure = "224,000";
+  const title = 'Ready Orders';
+  const caption = 'Since last month';
+  const figure = '224,000';
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-        >
+        <Grid container justify="space-between">
           <Grid item>
             <Typography
               className={classes.title}
               color="textSecondary"
               gutterBottom
-              variant="body2"
-            >
+              variant="body2">
               {title}
             </Typography>
             <Typography variant="h3">{figure}</Typography>
@@ -75,19 +68,13 @@ const ReadyOrders = props => {
             </Avatar>
           </Grid>
         </Grid>
-        
+
         <div className={classes.difference}>
           <ArrowDownwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
+          <Typography className={classes.differenceValue} variant="body2">
             12%
           </Typography>
-          <Typography
-            className={classes.caption}
-            variant="caption"
-          >
+          <Typography className={classes.caption} variant="caption">
             {caption}
           </Typography>
         </div>

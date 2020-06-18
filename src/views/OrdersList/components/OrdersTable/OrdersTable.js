@@ -16,7 +16,8 @@ import {
   TableHead,
   TableRow,
   Typography,
-  TablePagination
+  TablePagination,
+  Button
 } from '@material-ui/core';
 
 import { getInitials } from 'helpers';
@@ -46,13 +47,14 @@ const OrdersTable = props => {
 
   const classes = useStyles();
 
-  const customerName = "Name";
+  const customerName = "Customer";
   const customerPhone = "Phone";
   const customerLocation = "Location";
   const placedDate = "Placed";
   const expectedDate = "Expected";
   const deliveredDate = "Delivered";
   const currentOrderStatus = "Status";
+  const orderRefrence = "Refrence";
 
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -72,6 +74,10 @@ const OrdersTable = props => {
     setSelectedUsers(selectedUsers);
   };
 
+  const handleClickedOrder = () => {
+    console.log('Cliekced')
+
+}
   const handleSelectOne = (event, id) => {
     const selectedIndex = selectedUsers.indexOf(id);
     let newSelectedUsers = [];
@@ -124,6 +130,7 @@ const OrdersTable = props => {
                   </TableCell>
                   <TableCell>{customerName}</TableCell>
                   <TableCell>{customerPhone}</TableCell>
+                  <TableCell>{orderRefrence}</TableCell>
                   <TableCell>{customerLocation}</TableCell>
                   <TableCell>{placedDate}</TableCell>
                   <TableCell>{expectedDate}</TableCell>
@@ -159,6 +166,7 @@ const OrdersTable = props => {
                       </div>
                     </TableCell>
                     <TableCell>{user.phone}</TableCell>
+                    <TableCell>K65456</TableCell>
                     <TableCell>
                       {user.address.city}, {user.address.state},{' '}
                       {user.address.country}
@@ -173,7 +181,12 @@ const OrdersTable = props => {
                       {moment(user.createdAt).format('DD/MM/YYYY')}
                     </TableCell>
                     <TableCell>
+                      <Button
+                      onClick={() => handleClickedOrder()}
+                      href="/order"
+                      >
                       On the way
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
