@@ -16,6 +16,7 @@ export { default as CreateNewCustomer } from './CreateNewCustomer';
 export { default as SingleBranchView } from './SingleBranchView';
 export { default as SingleProductView } from './SingleProductView';
 export { default as SingleCustomerView } from './SingleCustomerView';
+export { default as SingleOrderView } from './SingleOrderView';
 
 export { default as Map } from '../components/Map';
 
