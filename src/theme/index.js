@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
 
+//import palette from './oldPalette';
 import palette from './palette';
 import typography from './typography';
 import overrides from './overrides';

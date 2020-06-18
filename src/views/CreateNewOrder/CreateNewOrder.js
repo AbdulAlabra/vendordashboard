@@ -8,7 +8,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import { AddressForm, DropOffForm, Review, ItemForm } from './components'
+import { PickupForm, DropOffForm, Review, ItemForm } from './components'
 
 function Copyright() {
   return (
@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 600,
+    [theme.breakpoints.up(1100 + theme.spacing(2) * 2)]: {
+      width: 1100,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
@@ -65,7 +65,7 @@ const steps = ['Pick up', 'Drop off', "Items", 'Review'];
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <PickupForm />;
     case 1:
       return <DropOffForm />;
     case 2:

@@ -106,21 +106,3 @@ export default function PaymentForm() {
     </React.Fragment>
   );
 }
-
-/* <Grid item xs={12} md={6}>
-        <TextField
-          required
-          id="cvv"
-          label="CVV"
-          helperText="Last three digits on signature strip"
-          fullWidth
-          autoComplete="cc-csc"
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <FormControlLabel
-          control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-          label="Remember credit card details for next time"
-        />
-      </Grid>
-     */
