@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardActions,
@@ -47,14 +48,14 @@ const OrdersTable = props => {
 
   const classes = useStyles();
 
-  const customerName = "Customer";
-  const customerPhone = "Phone";
-  const customerLocation = "Location";
-  const placedDate = "Placed";
-  const expectedDate = "Expected";
-  const deliveredDate = "Delivered";
-  const currentOrderStatus = "Status";
-  const orderRefrence = "Refrence";
+  const customerName = 'Customer';
+  const customerPhone = 'Phone';
+  const customerLocation = 'Location';
+  const placedDate = 'Placed';
+  const expectedDate = 'Expected';
+  const deliveredDate = 'Delivered';
+  const currentOrderStatus = 'Status';
+  const orderRefrence = 'Refrence';
 
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -75,9 +76,8 @@ const OrdersTable = props => {
   };
 
   const handleClickedOrder = () => {
-    console.log('Cliekced')
-
-}
+    console.log('Cliekced');
+  };
   const handleSelectOne = (event, id) => {
     const selectedIndex = selectedUsers.indexOf(id);
     let newSelectedUsers = [];
@@ -107,10 +107,7 @@ const OrdersTable = props => {
   };
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent className={classes.content}>
         <PerfectScrollbar>
           <div className={classes.inner}>
@@ -144,8 +141,7 @@ const OrdersTable = props => {
                     className={classes.tableRow}
                     hover
                     key={user.id}
-                    selected={selectedUsers.indexOf(user.id) !== -1}
-                  >
+                    selected={selectedUsers.indexOf(user.id) !== -1}>
                     <TableCell padding="checkbox">
                       <Checkbox
                         checked={selectedUsers.indexOf(user.id) !== -1}
@@ -156,10 +152,7 @@ const OrdersTable = props => {
                     </TableCell>
                     <TableCell>
                       <div className={classes.nameContainer}>
-                        <Avatar
-                          className={classes.avatar}
-                          src={user.avatarUrl}
-                        >
+                        <Avatar className={classes.avatar} src={user.avatarUrl}>
                           {getInitials(user.name)}
                         </Avatar>
                         <Typography variant="body1">{user.name}</Typography>
@@ -181,12 +174,11 @@ const OrdersTable = props => {
                       {moment(user.createdAt).format('DD/MM/YYYY')}
                     </TableCell>
                     <TableCell>
-                      <Button
-                      onClick={() => handleClickedOrder()}
-                      href="/order"
-                      >
-                      On the way
-                      </Button>
+                      <Link onClick={() => handleClickedOrder()} to="/order">
+                        <Button>
+                          On the way
+                        </Button>
+                      </Link>
                     </TableCell>
                   </TableRow>
                 ))}

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -12,6 +13,7 @@ import {
   Button
 } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
+
 const useStyles = makeStyles(theme => ({
   root: {},
   imageContainer: {
@@ -44,23 +46,12 @@ const ProductCard = props => {
   const classes = useStyles();
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent>
         <div className={classes.imageContainer}>
-          <img
-            alt="Product"
-            className={classes.image}
-            src={product.imageUrl}
-          />
+          <img alt="Product" className={classes.image} src={product.imageUrl} />
         </div>
-        <Typography
-          align="center"
-          gutterBottom
-          variant="h4"
-        >
+        <Typography align="center" gutterBottom variant="h4">
           Branch Name
         </Typography>
         <Typography
@@ -73,35 +64,18 @@ const ProductCard = props => {
       </CardContent>
       <Divider />
       <CardActions>
-        <Grid
-          container
-          justify="space-between"
-        >
-          <Grid
-            className={classes.statsItem}
-            item
-          >
+        <Grid container justify="space-between">
+          <Grid className={classes.statsItem} item>
             <HomeIcon className={classes.statsIcon} />
-            <Typography
-              display="inline"
-              variant="body2"
-            >
+            <Typography display="inline" variant="body2">
               Branch ID: 1882
             </Typography>
           </Grid>
-          <Grid
-            className={classes.statsItem}
-            item
-          >
-            <Typography
-              display="inline"
-              variant="body2"
-            >
-              <Button
-              href="/branch"
-              >
-                Edit
-              </Button>
+          <Grid className={classes.statsItem} item>
+            <Typography display="inline" variant="body2">
+              <Link to="/branch">
+                <Button>Edit</Button>
+              </Link>
             </Typography>
           </Grid>
         </Grid>

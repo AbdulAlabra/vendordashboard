@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
-
+import { Link } from 'react-router-dom';
 import { SearchInput } from 'components';
-
+  
 const useStyles = makeStyles(theme => ({
   root: {},
   row: {
@@ -39,9 +39,11 @@ const OrdersToolbar = props => {
         <span className={classes.spacer} />
         <Button className={classes.importButton}>Import</Button>
         <Button className={classes.exportButton}>Export</Button>
-        <Button color="primary" variant="contained" href="/neworder">
+        <Link to="/neworder">
+        <Button color="primary" variant="contained">
           Add New Order
         </Button>
+        </Link>
       </div>
       <div className={classes.row}>
         <SearchInput
