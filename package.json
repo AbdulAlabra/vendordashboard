@@ -7,9 +7,12 @@
   "private": false,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "12.x.x"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,7 +57,6 @@
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.17.1",
     "prettier-eslint": "^8.8.2",
-    " -eslint-cli": "^4.7.1",
     "typescript": "^3.5.1"
   }
 }
