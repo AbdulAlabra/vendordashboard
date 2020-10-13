@@ -1,6 +1,0 @@
-{
-  "projects": {
-    "staging": "waki-testing",
-    "production": "waki-bdb15"
-  }
-}
