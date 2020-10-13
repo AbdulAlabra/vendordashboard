@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "wakidrive-production"
+    "staging": "waki-testing",
+    "production": "waki-bdb15"
   }
 }
