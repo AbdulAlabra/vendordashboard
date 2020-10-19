@@ -12,7 +12,8 @@
     "eject": "react-scripts eject",
     "deploy-dev": "firebase use staging && firebase deploy",
     "deploy-prod": "firebase use production && firebase deploy",
-    "use-dev-mode": "firebase use staging"
+    "use-dev-mode": "firebase use staging",
+    "use-prod-mode": "firebase use production"
   },
   "engines": {
     "node": "12.x.x"
@@ -49,6 +50,7 @@
     "react-perfect-scrollbar": "^1.5.3",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.4.3",
+    "realm": "^10.0.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
