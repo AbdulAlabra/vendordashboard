@@ -56,7 +56,7 @@ const Map = props => {
 };
 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
-const APIKey = 'AIzaSyAhYXCGWsw3jZTiLTwYEiMGnHxt8VquUpQ';
+const APIKey = process.env.REACT_APP_MAP;
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${APIKey}`;
 
 const createMap = props => {

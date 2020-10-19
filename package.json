@@ -10,7 +10,9 @@
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "firebase use staging"
+    "deploy-dev": "firebase use staging && firebase deploy",
+    "deploy-prod": "firebase use production && firebase deploy",
+    "use-dev-mode": "firebase use staging"
   },
   "engines": {
     "node": "12.x.x"
