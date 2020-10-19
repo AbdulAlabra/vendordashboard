@@ -67,7 +67,9 @@ const createMap = props => {
         googleMapURL={googleMapURL}
         loadingElement={<div style={{ height: '100%' }} />}
         containerElement={<div style={{ height: '100%' }} />}
-        mapElement={<div style={{ height: '100%', borderRadius: mapBorderRadius }} />}
+        mapElement={
+          <div style={{ height: '100%', borderRadius: mapBorderRadius }} />
+        }
         markerLabel={markerLabel}
         onButtonClick={onButtonClick}
       />
