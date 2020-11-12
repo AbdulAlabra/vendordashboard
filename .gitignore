@@ -31,4 +31,4 @@ yarn-debug.log*
 yarn-error.log*
 
 #vs code files
-/.vscode/*
+/.vscode
