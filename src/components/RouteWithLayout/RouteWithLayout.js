@@ -1,18 +1,40 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { getIsLoggedInState } from 'redux-selectors';
+import { authorizationRequestThunk } from 'redux-action-creators/user-auth-actions';
+import { connect } from 'react-redux';
 
 const RouteWithLayout = props => {
-  const { layout: Layout, component: Component, ...rest } = props;
-
+  const {
+    isLoggedIn,
+    isProtected,
+    isAuthorize,
+    layout: Layout,
+    component: Component,
+    ...rest
+  } = props;
   return (
     <Route
       {...rest}
-      render={matchProps => (
-        <Layout>
-          <Component {...matchProps} />
-        </Layout>
-      )}
+      render={matchProps => {
+        //console.log(matchProps.history);
+        //matchProps.history.push('/');
+        if (isLoggedIn || !isProtected || isAuthorize().user) {
+          return <Layout>{<Component {...matchProps} />}</Layout>;
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: '/sign-in',
+                state: {
+                  from: props.location
+                }
+              }}
+            />
+          );
+        }
+      }}
     />
   );
 };
@@ -23,4 +45,15 @@ RouteWithLayout.propTypes = {
   path: PropTypes.string
 };
 
-export default RouteWithLayout;
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: getIsLoggedInState(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    isAuthorize: () => dispatch(authorizationRequestThunk())
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(RouteWithLayout);

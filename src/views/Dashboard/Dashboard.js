@@ -13,6 +13,8 @@ import {
   UsersByDevice,
   LatestOrders
 } from './components';
+import { connect } from 'react-redux';
+import { getLanguageDirectionState } from 'redux-selectors';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,27 +52,20 @@ const gridSizes = {
     md: 12,
     xs: 12
   }
+};
 
-}
-
-const Dashboard = () => {
+const Dashboard = props => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-
-
-      <Grid
-        container
-        spacing={4}
-      >
+    <div dir={props.languageDirection} className={classes.root}>
+      <Grid container spacing={4}>
         <Grid
           item
           xl={gridSizes.orders.xl}
           lg={gridSizes.orders.lg}
           sm={gridSizes.orders.sm}
-          xs={gridSizes.orders.xs}
-        >
+          xs={gridSizes.orders.xs}>
           <PendingOrders />
         </Grid>
         <Grid
@@ -78,8 +73,7 @@ const Dashboard = () => {
           xl={gridSizes.orders.xl}
           lg={gridSizes.orders.lg}
           sm={gridSizes.orders.sm}
-          xs={gridSizes.orders.xs}
-        >
+          xs={gridSizes.orders.xs}>
           <ReadyOrders />
         </Grid>
         <Grid
@@ -87,8 +81,7 @@ const Dashboard = () => {
           xl={gridSizes.orders.xl}
           lg={gridSizes.orders.lg}
           sm={gridSizes.orders.sm}
-          xs={gridSizes.orders.xs}
-        >
+          xs={gridSizes.orders.xs}>
           <OnTheWayOrders />
         </Grid>
 
@@ -97,8 +90,7 @@ const Dashboard = () => {
           xl={gridSizes.orders.xl}
           lg={gridSizes.orders.lg}
           sm={gridSizes.orders.sm}
-          xs={gridSizes.orders.xs}
-        >
+          xs={gridSizes.orders.xs}>
           <CanceledOrders />
         </Grid>
         <Grid
@@ -106,8 +98,7 @@ const Dashboard = () => {
           xl={gridSizes.orders.xl}
           lg={gridSizes.orders.lg}
           sm={gridSizes.orders.sm}
-          xs={gridSizes.orders.xs}
-        >
+          xs={gridSizes.orders.xs}>
           <ReturnedOrders />
         </Grid>
         <Grid
@@ -115,8 +106,7 @@ const Dashboard = () => {
           xl={gridSizes.orders.xl}
           lg={gridSizes.orders.lg}
           sm={gridSizes.orders.sm}
-          xs={gridSizes.orders.xs}
-        >
+          xs={gridSizes.orders.xs}>
           <DeliveredOrders />
         </Grid>
         <Grid
@@ -124,8 +114,7 @@ const Dashboard = () => {
           xl={gridSizes.accountBalance.xl}
           lg={gridSizes.accountBalance.lg}
           sm={gridSizes.accountBalance.sm}
-          xs={gridSizes.accountBalance.xs}
-        >
+          xs={gridSizes.accountBalance.xs}>
           <AccountBalance />
         </Grid>
         <Grid
@@ -133,8 +122,7 @@ const Dashboard = () => {
           xl={gridSizes.latestOrders.xl}
           lg={gridSizes.latestOrders.lg}
           md={gridSizes.latestOrders.md}
-          xs={gridSizes.latestOrders.xs}
-        >
+          xs={gridSizes.latestOrders.xs}>
           <LatestOrders />
         </Grid>
 
@@ -143,8 +131,7 @@ const Dashboard = () => {
           xl={gridSizes.graph.xl}
           lg={gridSizes.graph.lg}
           md={gridSizes.graph.md}
-          xs={gridSizes.graph.xs}
-        >
+          xs={gridSizes.graph.xs}>
           <LatestSales />
         </Grid>
         <Grid
@@ -152,17 +139,21 @@ const Dashboard = () => {
           xl={gridSizes.chart.xl}
           lg={gridSizes.chart.lg}
           md={gridSizes.chart.md}
-          xs={gridSizes.chart.xs}
-        >
+          xs={gridSizes.chart.xs}>
           <UsersByDevice />
         </Grid>
-     
-
-      
       </Grid>
-
     </div>
   );
 };
+const mapStateToProps = state => {
+  return {
+    languageDirection: getLanguageDirectionState(state)
+  };
+};
 
-export default Dashboard;
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -5,7 +5,9 @@ import { makeStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { SearchInput } from 'components';
-  
+import { connect } from 'react-redux';
+import { getLanguageDirectionState } from 'redux-selectors';
+
 const useStyles = makeStyles(theme => ({
   root: {},
   row: {
@@ -34,15 +36,19 @@ const OrdersToolbar = props => {
   const classes = useStyles();
 
   return (
-    <div {...rest} className={clsx(classes.root, className)}>
+    <div
+      //do not chnage languagedirection to camelCase, reat will through an err
+      dir={props.languagedirection}
+      {...rest}
+      className={clsx(classes.root, className)}>
       <div className={classes.row}>
         <span className={classes.spacer} />
         <Button className={classes.importButton}>Import</Button>
         <Button className={classes.exportButton}>Export</Button>
         <Link to="/neworder">
-        <Button color="primary" variant="contained">
-          Add New Order
-        </Button>
+          <Button color="primary" variant="contained">
+            Add New Order
+          </Button>
         </Link>
       </div>
       <div className={classes.row}>
@@ -59,4 +65,14 @@ OrdersToolbar.propTypes = {
   className: PropTypes.string
 };
 
-export default OrdersToolbar;
+const mapStateToProps = state => {
+  return {
+    languagedirection: getLanguageDirectionState(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrdersToolbar);

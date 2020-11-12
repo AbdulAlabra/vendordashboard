@@ -4,13 +4,12 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { Map } from 'components';
 
-
 export default function AddressForm() {
-  const itemHeader = "Items to Pick";
-  const pickupHeader = "From Branch"
+  const itemHeader = 'Items to Pick';
+  const pickupHeader = 'From Branch';
   const handleButtonClick = () => {
-    console.log("Hello Pick up form");
-  }
+    console.log('Hello Pick up form');
+  };
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -34,11 +33,7 @@ export default function AddressForm() {
           />
         </Grid>
         <Grid item xs={12} md={12}>
-          <TextField
-            id="Instructions"
-            label="Pick up Instructions"
-            fullWidth
-          />
+          <TextField id="Instructions" label="Pick up Instructions" fullWidth />
         </Grid>
       </Grid>
     </React.Fragment>

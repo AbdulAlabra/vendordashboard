@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
+import { connect } from 'react-redux';
+import { getLanguageDirectionState } from 'redux-selectors';
 
-import { CustomersToolbar,  CustomersTable } from './components';
+import { CustomersToolbar, CustomersTable } from './components';
 import mockData from './data';
 
 const useStyles = makeStyles(theme => ({
@@ -13,13 +15,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserList = () => {
+const UserList = props => {
   const classes = useStyles();
 
   const [users] = useState(mockData);
 
   return (
-    <div className={classes.root}>
+    <div dir={props.languageDirection} className={classes.root}>
       <CustomersToolbar />
       <div className={classes.content}>
         <CustomersTable users={users} />
@@ -28,4 +30,14 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+const mapStateToProps = state => {
+  return {
+    languageDirection: getLanguageDirectionState(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);

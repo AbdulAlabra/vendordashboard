@@ -6,6 +6,8 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { List, ListItem, Button, colors } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { getLanguageDirectionState } from 'redux-selectors';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -41,10 +43,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CustomRouterLink = forwardRef((props, ref) => (
-  <div
-    ref={ref}
-    style={{ flexGrow: 1 }}
-  >
+  <div ref={ref} style={{ flexGrow: 1 }}>
     <RouterLink {...props} />
   </div>
 ));
@@ -56,21 +55,16 @@ const SidebarNav = props => {
 
   return (
     <List
+      dir={props.languagedirection}
       {...rest}
-      className={clsx(classes.root, className)}
-    >
+      className={clsx(classes.root, className)}>
       {pages.map(page => (
-        <ListItem
-          className={classes.item}
-          disableGutters
-          key={page.title}
-        >
+        <ListItem className={classes.item} disableGutters key={page.title}>
           <Button
             activeClassName={classes.active}
             className={classes.button}
             component={CustomRouterLink}
-            to={page.href}
-          >
+            to={page.href}>
             <div className={classes.icon}>{page.icon}</div>
             {page.title}
           </Button>
@@ -85,4 +79,14 @@ SidebarNav.propTypes = {
   pages: PropTypes.array.isRequired
 };
 
-export default SidebarNav;
+const mapStateToProps = state => {
+  return {
+    languagedirection: getLanguageDirectionState(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarNav);

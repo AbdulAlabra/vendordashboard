@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Redirect } from 'react-router-dom';
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { RouteWithLayout } from './components';
 import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 import {
@@ -24,7 +24,9 @@ import {
   Map,
   SignUp,
   SignIn,
-  NotFound
+  PasswordReset,
+  NotFound,
+  EmailConfirmation
 } from './views';
 
 const Routes = () => {
@@ -36,71 +38,83 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/dashboard"
+        isProtected={true}
       />
       <RouteWithLayout
         component={OrdersList}
         exact
         layout={MainLayout}
         path="/orderslist"
+        isProtected={true}
       />
       <RouteWithLayout
         component={CustomersList}
         exact
         layout={MainLayout}
         path="/customerslist"
+        isProtected={true}
       />
       <RouteWithLayout
         component={ProductList}
         exact
         layout={MainLayout}
         path="/productslist"
+        isProtected={true}
       />
       <RouteWithLayout
         component={BranchesList}
         exact
         layout={MainLayout}
         path="/brancheslist"
+        isProtected={true}
       />
       <RouteWithLayout
         component={TransactionsList}
         exact
         layout={MainLayout}
         path="/transactionslist"
+        isProtected={true}
       />
       <RouteWithLayout
         component={Account}
         exact
         layout={MainLayout}
         path="/account"
+        isProtected={true}
       />
       <RouteWithLayout
         component={Settings}
         exact
         layout={MainLayout}
         path="/settings"
+        isProtected={true}
       />
       <RouteWithLayout
         component={CreateNewOrder}
         exact
         layout={MainLayout}
         path="/neworder"
+        isProtected={true}
       />
       <RouteWithLayout
         component={CreateNewProduct}
         exact
         layout={MainLayout}
         path="/newproduct"
+        isProtected={true}
       />
       <RouteWithLayout
         component={CreateNewBranch}
         exact
         layout={MainLayout}
         path="/newbranch"
+        isProtected={true}
       />
       <RouteWithLayout
         component={CreateNewCustomer}
         exact
         layout={MainLayout}
+        isProtected={true}
         path="/newcustomer"
       />
       <RouteWithLayout
@@ -108,24 +122,28 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/branch"
+        isProtected={true}
       />
       <RouteWithLayout
         component={SingleProductView}
         exact
         layout={MainLayout}
         path="/product"
+        isProtected={true}
       />
       <RouteWithLayout
         component={SingleCustomerView}
         exact
         layout={MainLayout}
         path="/customer"
+        isProtected={true}
       />
       <RouteWithLayout
         component={SingleOrderView}
         exact
         layout={MainLayout}
         path="/order"
+        isProtected={true}
       />
       <RouteWithLayout component={Map} exact layout={MainLayout} path="/map" />
       <RouteWithLayout
@@ -133,18 +151,35 @@ const Routes = () => {
         exact
         layout={MinimalLayout}
         path="/sign-up"
+        isProtected={false}
       />
       <RouteWithLayout
         component={SignIn}
         exact
         layout={MinimalLayout}
         path="/sign-in"
+        isProtected={false}
+      />
+      <RouteWithLayout
+        component={PasswordReset}
+        exact
+        layout={MinimalLayout}
+        path="/password-reset"
+        isProtected={false}
       />
       <RouteWithLayout
         component={NotFound}
         exact
         layout={MinimalLayout}
         path="/not-found"
+        isProtected={false}
+      />
+      <RouteWithLayout
+        component={EmailConfirmation}
+        exact
+        layout={MinimalLayout}
+        path="/email-confirmation"
+        isProtected={false}
       />
       <Redirect to="/not-found" />
     </Switch>

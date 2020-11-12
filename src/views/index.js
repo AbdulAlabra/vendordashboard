@@ -23,5 +23,5 @@ export { default as Map } from '../components/Map';
 export { default as NotFound } from './NotFound';
 export { default as SignIn } from './SignIn';
 export { default as SignUp } from './SignUp';
-
-
+export { default as EmailConfirmation } from './email-confirmation';
+export { default as PasswordReset } from './SignIn-password-reset';

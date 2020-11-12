@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import capitalize from 'capitalize';
 import {
   Grid,
   Button,
@@ -11,24 +12,19 @@ import {
   Typography
 } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForward from '@material-ui/icons/ArrowForward';
+import Fade from '@material-ui/core/Fade';
+import { connect } from 'react-redux';
+import { getLanguageDirectionState, getAuthState } from 'redux-selectors';
+import {
+  logInEmailPasswordThunk,
+  logOutThunk
+} from 'redux-action-creators/user-auth-actions';
+import transitions from 'theme/transitions';
+import { Language } from 'components';
 
-import { Facebook as FacebookIcon, Google as GoogleIcon } from 'icons';
-
-const schema = {
-  email: {
-    presence: { allowEmpty: false, message: 'is required' },
-    email: true,
-    length: {
-      maximum: 64
-    }
-  },
-  password: {
-    presence: { allowEmpty: false, message: 'is required' },
-    length: {
-      maximum: 128
-    }
-  }
-};
+import * as translation from 'translations';
+import * as messages from 'messages';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -126,27 +122,30 @@ const useStyles = makeStyles(theme => ({
 
 const SignIn = props => {
   const { history } = props;
-
   const classes = useStyles();
 
   const [formState, setFormState] = useState({
     isValid: false,
+    typing: false,
+    redirect: false,
     values: {},
     touched: {},
     errors: {}
   });
 
   useEffect(() => {
-    // next line caused an error becasue I deleted the validate.js dependency
-    //const errors = validate(formState.values, schema);
     const errors = [];
-
     setFormState(formState => ({
       ...formState,
       isValid: errors ? false : true,
       errors: errors || {}
     }));
   }, [formState.values]);
+
+  useEffect(() => {
+    const { dispatchLogOut } = props;
+    dispatchLogOut();
+  }, []);
 
   const handleBack = () => {
     history.goBack();
@@ -164,23 +163,49 @@ const SignIn = props => {
             ? event.target.checked
             : event.target.value
       },
-      touched: {
-        ...formState.touched,
-        [event.target.name]: true
+      typing: true
+    }));
+  };
+
+  const handelRequiredField = e => {
+    e.preventDefault();
+    e.persist();
+    setFormState(prev => ({
+      ...prev,
+      errors: {
+        ...prev.errors,
+        [e.target.name]: translation.required
       }
     }));
   };
 
-  const handleSignIn = event => {
+  const handleSignIn = async event => {
     event.preventDefault();
-    history.push('/');
+
+    const { email, password } = formState.values;
+    const { dispatchLogInEmailPassword } = props;
+    const user = await dispatchLogInEmailPassword({ email, password });
+    setFormState(prev => ({
+      ...prev,
+      typing: false
+    }));
+    // const user = await isUserLoggedIn();
+    // console.log('state', user.state);
+    // console.log('isLoggedIn', user.isLoggedIn);
+    // console.log('profile', user.profile);
+    // console.log('identities', user.identities);
+    // console.log('id', user.id);
+    // console.log('deviceId', user.deviceId);
+    // console.log('functions', user.functions);
+    if (user.message === messages.email_confirmation_is_required)
+      history.push(`/email-confirmation?targetEmail=${email}`);
+
+    if (user.user) history.push('/');
   };
 
-  const hasError = field =>
-    formState.touched[field] && formState.errors[field] ? true : false;
-
+  const hasError = field => (formState.errors[field] ? true : false);
   return (
-    <div className={classes.root}>
+    <div dir={props.languageDirection} className={classes.root}>
       <Grid className={classes.grid} container>
         <Grid className={classes.quoteContainer} item lg={5}>
           <div className={classes.quote}>
@@ -202,93 +227,101 @@ const SignIn = props => {
         </Grid>
         <Grid className={classes.content} item lg={7} xs={12}>
           <div className={classes.content}>
-            <div className={classes.contentHeader}>
-              <IconButton onClick={handleBack}>
-                <ArrowBackIcon />
-              </IconButton>
-            </div>
-            <div className={classes.contentBody}>
-              <form className={classes.form} onSubmit={handleSignIn}>
-                <Typography className={classes.title} variant="h2">
-                  Sign in
-                </Typography>
-                <Typography color="textSecondary" gutterBottom>
-                  Sign in with social media
-                </Typography>
-                <Grid className={classes.socialButtons} container spacing={2}>
-                  <Grid item>
-                    <Button
-                      color="primary"
-                      onClick={handleSignIn}
-                      size="large"
-                      variant="contained">
-                      <FacebookIcon className={classes.socialIcon} />
-                      Login with Facebook
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      onClick={handleSignIn}
-                      size="large"
-                      variant="contained">
-                      <GoogleIcon className={classes.socialIcon} />
-                      Login with Google
-                    </Button>
-                  </Grid>
-                </Grid>
-                <Typography
-                  align="center"
-                  className={classes.sugestion}
-                  color="textSecondary"
-                  variant="body1">
-                  or login with email address
-                </Typography>
-                <TextField
-                  className={classes.textField}
-                  error={hasError('email')}
-                  fullWidth
-                  helperText={
-                    hasError('email') ? formState.errors.email[0] : null
-                  }
-                  label="Email address"
-                  name="email"
-                  onChange={handleChange}
-                  type="text"
-                  value={formState.values.email || ''}
-                  variant="outlined"
-                />
-                <TextField
-                  className={classes.textField}
-                  error={hasError('password')}
-                  fullWidth
-                  helperText={
-                    hasError('password') ? formState.errors.password[0] : null
-                  }
-                  label="Password"
-                  name="password"
-                  onChange={handleChange}
-                  type="password"
-                  value={formState.values.password || ''}
-                  variant="outlined"
-                />
-                <Button
-                  className={classes.signInButton}
-                  color="primary"
-                  disabled={!formState.isValid}
-                  fullWidth
-                  size="large"
-                  type="submit"
-                  variant="contained">
-                  Sign in now
-                </Button>
-                <Typography color="textSecondary" variant="body1">
-                  Don't have an account?{' '}
-                  <Link component={RouterLink} to="/sign-up" variant="h6">
-                    Sign up
-                  </Link>
-                </Typography>
-              </form>
-            </div>
+            <Grid className={classes.contentHeader} container={true}>
+              <Grid xs={11} item={true}>
+                <IconButton onClick={handleBack}>
+                  {props.languageDirection === 'ltr' ? (
+                    <ArrowBackIcon />
+                  ) : (
+                    <ArrowForward />
+                  )}
+                </IconButton>
+              </Grid>
+
+              <Grid xs={1} item={true}>
+                <Language />
+              </Grid>
+            </Grid>
+
+            <Fade in={true} timeout={transitions.duration.standard}>
+              <div className={classes.contentBody}>
+                <form className={classes.form} onSubmit={handleSignIn}>
+                  <Typography className={classes.title} variant="h2">
+                    {capitalize(translation.welcome)}
+                  </Typography>
+
+                  <Typography color="textSecondary" gutterBottom>
+                    {translation.sign_in_to_your_account}
+                  </Typography>
+
+                  <Typography align="center" color="error" gutterBottom>
+                    {formState.typing === true
+                      ? ''
+                      : translation[props.auth.message]}
+                  </Typography>
+
+                  <TextField
+                    className={classes.textField}
+                    fullWidth
+                    helperText={
+                      hasError('email') ? formState.errors.email : null
+                    }
+                    label={capitalize(translation.email_address)}
+                    name="email"
+                    error={hasError('email')}
+                    required={true}
+                    onInvalid={handelRequiredField}
+                    onChange={handleChange}
+                    type="text"
+                    value={formState.values.email || ''}
+                    variant="outlined"
+                  />
+                  <TextField
+                    className={classes.textField}
+                    error={hasError('password')}
+                    helperText={
+                      hasError('password') ? formState.errors.password : null
+                    }
+                    fullWidth
+                    required={true}
+                    onInvalid={handelRequiredField}
+                    label={capitalize(translation.password)}
+                    name="password"
+                    onChange={handleChange}
+                    type="password"
+                    value={formState.values.password || ''}
+                    variant="outlined"
+                  />
+
+                  <Button
+                    className={classes.signInButton}
+                    color="primary"
+                    disabled={props.auth.isFetchingUser}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained">
+                    {translation.sign_in_now}
+                  </Button>
+
+                  <Typography color="textSecondary" variant="body1">
+                    {`${translation.dont_have_an_account} ${translation.or} ${translation.forgot_password}${translation.question_mark} `}
+
+                    <Link component={RouterLink} to="/sign-up" variant="h6">
+                      {translation.sign_up}
+                    </Link>
+                    {` ${translation.or} `}
+
+                    <Link
+                      component={RouterLink}
+                      to="/password-reset"
+                      variant="h6">
+                      {translation.reset_password}
+                    </Link>
+                  </Typography>
+                </form>
+              </div>
+            </Fade>
           </div>
         </Grid>
       </Grid>
@@ -300,4 +333,19 @@ SignIn.propTypes = {
   history: PropTypes.object
 };
 
-export default withRouter(SignIn);
+const mapStateToProps = state => {
+  return {
+    languageDirection: getLanguageDirectionState(state),
+    auth: getAuthState(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchLogInEmailPassword: payload =>
+      dispatch(logInEmailPasswordThunk(payload)),
+    dispatchLogOut: () => dispatch(logOutThunk())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));

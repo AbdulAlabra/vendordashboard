@@ -4,7 +4,11 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography } from '@material-ui/core';
-
+import { connect } from 'react-redux';
+import {
+  getUserCustomDataDisplayNameState,
+  getUserCustomDataFullNameState
+} from 'redux-selectors';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -27,16 +31,13 @@ const Profile = props => {
   const classes = useStyles();
 
   const user = {
-    name: 'Shen Zhi',
+    name: props.displayname,
     avatar: '/images/avatars/avatar_11.png',
-    bio: 'Brain Director'
+    bio: props.fullname
   };
 
   return (
-    <div
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <div {...rest} className={clsx(classes.root, className)}>
       <Avatar
         alt="Person"
         className={classes.avatar}
@@ -44,10 +45,7 @@ const Profile = props => {
         src={user.avatar}
         to="/settings"
       />
-      <Typography
-        className={classes.name}
-        variant="h4"
-      >
+      <Typography className={classes.name} variant="h4">
         {user.name}
       </Typography>
       <Typography variant="body2">{user.bio}</Typography>
@@ -58,5 +56,13 @@ const Profile = props => {
 Profile.propTypes = {
   className: PropTypes.string
 };
+const mapStateToProps = state => {
+  // I used lower case names here because for some reason react throws an error if I use camelCase like displayName
+  return {
+    displayname: getUserCustomDataDisplayNameState(state),
+    fullname: getUserCustomDataFullNameState(state)
+  };
+};
 
-export default Profile;
+export default connect(mapStateToProps, {})(Profile);
+// because we are not making any dispatch actins, you give an empty object to the connect method so that it does not throug an error

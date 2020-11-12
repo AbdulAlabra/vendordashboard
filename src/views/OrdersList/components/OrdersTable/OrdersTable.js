@@ -5,6 +5,9 @@ import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getLanguageDirectionState } from 'redux-selectors';
+
 import {
   Card,
   CardActions,
@@ -107,7 +110,11 @@ const OrdersTable = props => {
   };
 
   return (
-    <Card {...rest} className={clsx(classes.root, className)}>
+    <Card
+      // do not change the languagedirection to camelCase. react will through an error
+      dir={props.languagedirection}
+      {...rest}
+      className={clsx(classes.root, className)}>
       <CardContent className={classes.content}>
         <PerfectScrollbar>
           <div className={classes.inner}>
@@ -175,9 +182,7 @@ const OrdersTable = props => {
                     </TableCell>
                     <TableCell>
                       <Link onClick={() => handleClickedOrder()} to="/order">
-                        <Button>
-                          On the way
-                        </Button>
+                        <Button>On the way</Button>
                       </Link>
                     </TableCell>
                   </TableRow>
@@ -207,4 +212,14 @@ OrdersTable.propTypes = {
   users: PropTypes.array.isRequired
 };
 
-export default OrdersTable;
+const mapStateToProps = state => {
+  return {
+    languagedirection: getLanguageDirectionState(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrdersTable);

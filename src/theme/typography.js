@@ -86,4 +86,6 @@ export default {
     lineHeight: '13px',
     textTransform: 'uppercase'
   }
+
+  //fontFamily: 'Comic Sans MS'
 };

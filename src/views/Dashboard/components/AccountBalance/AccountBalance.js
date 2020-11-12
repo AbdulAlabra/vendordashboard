@@ -35,32 +35,22 @@ const AccountBalance = props => {
 
   const classes = useStyles();
 
-  const title = "Account Balance"
-  const figure = "$24,000";
+  const title = 'Account Balance';
+  const figure = '$24,000';
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-        >
+        <Grid container justify="space-between">
           <Grid item>
             <Typography
               className={classes.title}
               color="inherit"
               gutterBottom
-              variant="body2"
-            >
+              variant="body2">
               {title}
             </Typography>
-            <Typography
-              color="inherit"
-              variant="h3"
-            >
+            <Typography color="inherit" variant="h3">
               {figure}
             </Typography>
           </Grid>
@@ -69,7 +59,6 @@ const AccountBalance = props => {
               <Icon className={classes.icon} />
             </Avatar>
           </Grid>
-
         </Grid>
       </CardContent>
     </Card>

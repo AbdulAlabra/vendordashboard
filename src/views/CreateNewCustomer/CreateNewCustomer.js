@@ -8,7 +8,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { CustomerLocationForm, CustomerInfoForm, Review } from './components';
-
+import { connect } from 'react-redux';
+import { getLanguageDirectionState } from 'redux-selectors';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -63,7 +64,7 @@ function getStepContent(step) {
   }
 }
 
-export default function Checkout() {
+const Checkout = props => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -78,7 +79,7 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <main className={classes.layout}>
+      <main dir={props.languageDirection} className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
             New Customer
@@ -126,4 +127,15 @@ export default function Checkout() {
       </main>
     </React.Fragment>
   );
-}
+};
+const mapStateToProps = state => {
+  return {
+    languageDirection: getLanguageDirectionState(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

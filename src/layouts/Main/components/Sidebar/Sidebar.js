@@ -12,7 +12,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import LocalShippingSharpIcon from '@material-ui/icons/LocalShippingSharp';
 import { Profile, SidebarNav } from './components';
 import AccountBalanceSharpIcon from '@material-ui/icons/AccountBalanceSharp';
-
+import { connect } from 'react-redux';
+import { getLanguageDirectionState } from 'redux-selectors';
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: 240,
@@ -67,7 +68,7 @@ const Sidebar = props => {
       href: '/brancheslist',
       icon: <StorefrontSharpIcon />
     },
-    
+
     {
       title: 'Transactions',
       href: '/transactionslist',
@@ -87,23 +88,17 @@ const Sidebar = props => {
 
   return (
     <Drawer
+      //do not chnage languagedirection to languageDirection becasue react will give an err
+      dir={props.languagedirection}
       anchor="left"
       classes={{ paper: classes.drawer }}
       onClose={onClose}
       open={open}
-      variant={variant}
-    >
-      <div
-        {...rest}
-        className={clsx(classes.root, className)}
-      >
+      variant={variant}>
+      <div {...rest} className={clsx(classes.root, className)}>
         <Profile />
         <Divider className={classes.divider} />
-        <SidebarNav
-          className={classes.nav}
-          pages={pages}
-        />
-
+        <SidebarNav className={classes.nav} pages={pages} />
       </div>
     </Drawer>
   );
@@ -115,5 +110,14 @@ Sidebar.propTypes = {
   open: PropTypes.bool.isRequired,
   variant: PropTypes.string.isRequired
 };
+const mapStateToProps = state => {
+  return {
+    languagedirection: getLanguageDirectionState(state)
+  };
+};
 
-export default Sidebar;
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
